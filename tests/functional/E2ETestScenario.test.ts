@@ -6,7 +6,7 @@ import { testConfig } from '../../testConfig';
 import { Logger } from '../../utils/Logger';
 
 
-test(`Navigate to Para bank application and verify the details`, { tag: '@Smoke'}, async ({ homePage, registerPage, welcomePage, accountOverviewPage, 
+test(`Navigate to Para bank application and verify the details`, { tag: '@Regression'}, async ({ homePage, registerPage, welcomePage, accountOverviewPage, 
     openNewAccountPage, transferFundsPage, billPayPage, apiActions, webActions, AssertionUtils, ApiAssertionUtils,
     request }) => {
     let createdUser;
@@ -161,7 +161,7 @@ test(`Navigate to Para bank application and verify the details`, { tag: '@Smoke'
         await webActions.clickElement(billPayPage.sendPaymentButton);
         console.log(`Bill payment amount used: ${billAmount}`);
         await billPayPage.billPaymentCompleteMessage.waitFor({ state: 'visible' })
-        
+
         // Assert bill payment complete message is visible
         await AssertionUtils.assertElementVisible(billPayPage.billPaymentCompleteMessage);
         // Assert displayed payee name matches the payee data
