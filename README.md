@@ -15,6 +15,8 @@ Comprehensive Reporting: Supports Playwright’s built-in HTML reports as well a
 
 Configurable Environments: Supports environment-based test execution with config switching (e.g., QA, Dev).
 
+CI/CD testing: Supports execution of CI/CD pipeline via Jenkins and GitHub Webhooks. 
+
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v16 or above recommended)
