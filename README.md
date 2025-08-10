@@ -57,6 +57,7 @@ npx playwright test tests/functional/E2ETestScenario.test.ts
 ```
 
 **Run tests for a specific project (browser):**
+Currently set up to run on Edge. Kindly uncomment the blocks for Chromium and Mozilla on playwright.config file to run on all three browsers.
 ```powershell
 npx playwright test --project=Edge
 ```
