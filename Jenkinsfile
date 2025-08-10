@@ -26,10 +26,16 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Run Playwright Tests') {
             steps {
                 bat 'npx playwright install --with-deps'
-                bat 'npx playwright test E2ETestScenario.test.ts --project=Edge'
+                bat 'npx playwright test E2ETestScenario.test.ts --project=Edge --reporter=html,allure-playwright'
+            }
+        }
+
+        stage('Generate Allure Report') {
+            steps {
+                bat 'npx allure generate allure-results --clean -o allure-report'
             }
         }
 
@@ -37,6 +43,20 @@ pipeline {
             steps {
                 archiveArtifacts artifacts: 'test-results/**/*.*', allowEmptyArchive: true
                 archiveArtifacts artifacts: 'allure-report/**/*.*', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'playwright-report/**/*.*', allowEmptyArchive: true
+            }
+        }
+
+        stage('Publish Playwright HTML Report') {
+            steps {
+                publishHTML(target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'playwright-report',
+                    reportFiles: 'index.html',
+                    reportName: 'Playwright HTML Report'
+                ])
             }
         }
     }
