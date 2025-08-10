@@ -37,6 +37,7 @@ test(`Navigate to Para bank application and verify the details`, { tag: '@Smoke'
         await registerPage.fillRegistrationForm(randomData);
         createdUser = { username: randomData.username, password: randomData.password };
         await webActions.clickElement(registerPage.registerButton);
+
         // Assert the Welcome text is visible after registration for the created user
         await AssertionUtils.assertTextVisible(welcomePage.page, `Welcome ${randomData.username}`);
         // Assert Welcome page title and URL
@@ -54,16 +55,21 @@ test(`Navigate to Para bank application and verify the details`, { tag: '@Smoke'
         await homePage.usernameInput.fill(createdUser.username);
         await homePage.passwordInput.fill(createdUser.password);
         await homePage.loginButton.click();
+
         // Assert Accounts Overview page title and URL
         await AssertionUtils.assertPageTitleAndUrl(accountOverviewPage.page, `Accounts Overview`);
+
         // Assert account table is visible
         await AssertionUtils.assertElementVisible(accountOverviewPage.accountTable);
         originalBalance = await webActions.getValueFromTableByColumn(accountOverviewPage.accountTable, 'Balance*');
-        console.log(`Original balance: ${originalBalance}`);   
+        console.log(`Original balance for the main account: ${originalBalance}`);
     });
 
     await test.step('Verify global navigation menu on Home page is working as expected', async () => {
+        // Verify links are visible and enable on Global navigation menu
         await homePage.verifyGlobalNavigationMenu();
+
+        // Verify and click links on Welcome page after login. Assert page title and url for each link
         await webActions.verifyAndClickLinks(welcomePage.welcomePageLinks, welcomePage.welcomePageLinkTexts);
     });
 
@@ -73,13 +79,14 @@ test(`Navigate to Para bank application and verify the details`, { tag: '@Smoke'
         await AssertionUtils.assertPageTitleAndUrl(openNewAccountPage.page, 'Open New Account');
         // Assert Open New Account title is visible
         await AssertionUtils.assertElementVisible(openNewAccountPage.openNewAccountTitle);
-
         await openNewAccountPage.accountTypeDropdown.waitFor({ state: 'visible' });
+        // Select Savings account on the drop down
         await webActions.selectDropdown(openNewAccountPage.accountTypeDropdown, 1);
         originalAccountNumber = await webActions.getSelectedDropdownText(openNewAccountPage.accountNumberDropDown);
         minimumDeposit = parseFloat(await openNewAccountPage.getDepositAmount());
-        Logger.info(`Selected account number: ${originalAccountNumber}`);
+        Logger.info(`Original account number: ${originalAccountNumber}`);
         await webActions.clickElement(openNewAccountPage.openNewAccountButton);
+        
         // Assert 'Account Opened!' text is visible
         await AssertionUtils.assertTextVisible(accountOverviewPage.page, 'Account Opened!');
         // Assert Congratulations text on successful account opening
