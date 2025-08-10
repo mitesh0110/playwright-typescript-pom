@@ -32,7 +32,6 @@ npm install -g allure-commandline --save-dev
 1. **Clone the repository**
 	```powershell
 	git clone https://github.com/mitesh0110/playwright-typescript-fabric.git
-	cd playwright-typescript-framework
 	```
 
 2. **Install dependencies**
@@ -58,6 +57,7 @@ npx playwright test tests/functional/E2ETestScenario.test.ts
 ```
 
 **Run tests for a specific project (browser):**
+Currently set up to run on Edge. Kindly uncomment the blocks for Chromium and Mozilla on playwright.config file to run on all three browsers.
 ```powershell
 npx playwright test --project=Edge
 ```
