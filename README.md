@@ -44,10 +44,6 @@ npm install -g allure-commandline --save-dev
 	```powershell
 	npx playwright install
 	```
-4. **Install rimraf to clean up allure results on local**
-   ```powershell
-   npm install rimraf --save-dev
-   ```
 
 ### Running Tests
 
