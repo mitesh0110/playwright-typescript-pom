@@ -32,7 +32,6 @@ npm install -g allure-commandline --save-dev
 1. **Clone the repository**
 	```powershell
 	git clone https://github.com/mitesh0110/playwright-typescript-fabric.git
-	cd playwright-typescript-framework
 	```
 
 2. **Install dependencies**
