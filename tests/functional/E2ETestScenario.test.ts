@@ -6,7 +6,8 @@ import { testConfig } from '../../testConfig';
 import { Logger } from '../../utils/Logger';
 
 
-test(`Navigate to Para bank application and verify the details`, { tag: '@Regression'}, async ({ homePage, registerPage, welcomePage, accountOverviewPage, 
+test(`Verify that the user is able to register, login, create account, transfer funds, pay bill and verify transactions`,
+    { tag: '@Regression'}, async ({ homePage, registerPage, welcomePage, accountOverviewPage, 
     openNewAccountPage, transferFundsPage, billPayPage, apiActions, webActions, AssertionUtils, ApiAssertionUtils,
     request }) => {
     let createdUser;
