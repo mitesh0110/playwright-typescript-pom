@@ -6,9 +6,6 @@ const ENV = process.env.npm_config_ENV || "qa";
 const config: PlaywrightTestConfig = {
   workers: 3,
 
-  //Global Setup to run before all tests
-  globalSetup: `./global-setup`,
-
   //sets timeout for each test case
   timeout: 30000,
 
