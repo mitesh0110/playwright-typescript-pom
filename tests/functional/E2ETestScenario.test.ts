@@ -1,8 +1,3 @@
-// NOTE: If you want to run or debug this test using the VS Code UI buttons, change the import below to:
-// import { test } from '@playwright/test';
-// and adjust the test to use only standard Playwright fixtures.
-// For custom fixtures (like BaseTest), run tests using the CLI: npx playwright test
-
 import test from '@lib/BaseTest';
 import { expect } from '@playwright/test';
 
