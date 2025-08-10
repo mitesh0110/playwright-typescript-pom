@@ -15,10 +15,12 @@ Comprehensive Reporting: Supports Playwright’s built-in HTML reports as well a
 
 Configurable Environments: Supports environment-based test execution with config switching (e.g., QA, Dev).
 
+CI/CD testing: Supports execution of CI/CD pipeline via Jenkins and GitHub Webhooks. 
+
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v16 or above recommended)
-- [npm](https://www.npmjs.com/) (comes with Node.js)
+- Java (8 or above - for allure reports)
 - Playwright browsers installed (npx playwright install)
 - Allure Commandline CLI installed globally for reporting:
 ```powershell
@@ -42,6 +44,10 @@ npm install -g allure-commandline --save-dev
 	```powershell
 	npx playwright install
 	```
+4. **Install rimraf to clean up allure results on local**
+   ```powershell
+   npm install rimraf --save-dev
+   ```
 
 ### Running Tests
 
@@ -88,16 +94,16 @@ Default is `qa` if not specified.
 
 ### Project Structure
 
-- tests/                # Test cases organized by feature
-- lib/                  # Reusable common libraries for UI & API interactions
-- pageFactory/          # Page Object Model classes
-- utils/                # Common assertions and verification utilities
-- testdata/             # Test data files
-- allure-report/        # Generated Allure report output folder
-- playwright-report/    # Playwright built-in HTML report folder
+- tests/               ------------ # Test cases organized by feature
+- lib/                 ------------ # Reusable common libraries for UI & API interactions
+- pageFactory/         ------------ # Page Object Model classes
+- utils/               ------------ # Common assertions and verification utilities
+- testdata/            ------------ # Test data files
+- allure-report/       ------------ # Generated Allure report output folder
+- playwright-report/   ------------ # Playwright built-in HTML report folder
 - package.json
-- playwright.config.ts  # Playwright configuration file
-- Jenkinsfile           # To run tests using CI/CD pipeline via Jenkins 
+- playwright.config.ts ------------ # Playwright configuration file
+- Jenkinsfile          ------------ # To run tests using CI/CD pipeline via Jenkins 
 
 ### Troubleshooting
 
