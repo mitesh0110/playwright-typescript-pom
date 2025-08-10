@@ -7,6 +7,8 @@ let webActions: WebActions;
 export class TransferFundsPage {
     readonly page: Page;
     readonly context: BrowserContext;
+    
+    // Elements on the Transfer funds page
     readonly transferFundsTitle: Locator;
     readonly amountInput: Locator;
     readonly fromAccountDropDown: Locator;

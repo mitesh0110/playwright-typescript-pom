@@ -7,16 +7,15 @@ let webActions: WebActions;
 
 export class BillPayPage {
 
-    
+    readonly page: Page;
+    readonly context: BrowserContext;
+
+    // Elements in the Bill Pay form
     readonly billPayServiceTitle: Locator;
     readonly payeeNameInput: Locator;
     readonly addressInput: Locator;
     readonly cityInput: Locator;
-    readonly page: Page;
-    readonly context: BrowserContext;
     readonly stateInput: Locator;
-
-    // Account Services links
     readonly zipCodeInput: Locator;
     readonly phoneNumberInput: Locator;
     readonly accountNumberInput: Locator;
@@ -25,7 +24,7 @@ export class BillPayPage {
     readonly fromAccountDropDown: Locator;
     readonly sendPaymentButton: Locator;
 
-    // Elements in Bill Pay success message
+    // Elements in Bill Pay success page
     readonly billPaymentCompleteMessage: Locator;
     readonly displayedPayeeName: Locator;
     readonly paidBillAmount: Locator;

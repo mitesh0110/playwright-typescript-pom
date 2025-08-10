@@ -9,6 +9,8 @@ let webActions: WebActions;
 export class RegisterPage {
     readonly page: Page;
     readonly context: BrowserContext;
+
+    // Elements on the registration page
     readonly firstNameInput: Locator;
     readonly lastNameInput: Locator;
     readonly addressInput: Locator;
@@ -103,6 +105,5 @@ export class RegisterPage {
             this.registerButton
         ];
     }
-
 
 }

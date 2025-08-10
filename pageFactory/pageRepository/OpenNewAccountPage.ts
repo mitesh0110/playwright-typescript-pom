@@ -10,7 +10,7 @@ export class OpenNewAccountPage {
     readonly context: BrowserContext;
     readonly logOutLink: Locator;
 
-    // Account Services links
+    // Elements in the Open New Account page
     readonly openNewAccountTitle: Locator;
     readonly accountTypeDropdown: Locator;
     readonly accountNumberDropDown: Locator;
@@ -30,18 +30,12 @@ export class OpenNewAccountPage {
         this.openNewAccountTitle = page.locator('h1.title:has-text("Open New Account")');
         // Account type dropdown
         this.accountTypeDropdown = page.locator('select#type.input');
-
         // Account number dropdown
         this.accountNumberDropDown = page.locator('select#fromAccountId.input');
-
         // Open New Account button
         this.openNewAccountButton = page.locator('input.button[type="button"][value="Open New Account"]');
-
         this.newAccountNumber = page.locator('a#newAccountId');
-
         this.depositMessage = page.locator('#openAccountForm b', { hasText: /\$\d{1,3}(,\d{3})*\.\d{2}/ })
-
-
     }
 
     /**
@@ -59,5 +53,4 @@ export class OpenNewAccountPage {
         throw new Error('Deposit amount not found');
     }
 
-   
 }

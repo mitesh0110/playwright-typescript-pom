@@ -6,20 +6,6 @@ import { testConfig } from '../../testConfig';
 let webActions: WebActions;
 
 export class WelcomePage {
-    /**
-     * Returns an array of link texts matching the order of welcomePageElementsList, for use with verifyAndClickLinks.
-     */
-    get welcomePageLinkTexts(): string[] {
-        return [
-            'Open New Account',
-            'Accounts Overview',
-            'Transfer Funds',
-            'Bill Pay',
-            'Find Transactions',
-            'Update Contact Info',
-            'Request Loan'
-        ];
-    }
     readonly page: Page;
     readonly context: BrowserContext;
     readonly logOutLink: Locator;
@@ -40,7 +26,6 @@ export class WelcomePage {
         this.page = page;
         this.context = context;
         webActions = new WebActions(this.page, this.context);
-        // Elements on the left side of the page
         this.logOutLink = page.locator('a[href="logout.htm"]:has-text("Log Out")');
 
         // Account Services links in leftPanel
@@ -70,5 +55,19 @@ export class WelcomePage {
             this.requestLoanLink
         ];
     }
-   
+
+    /**
+     * Returns an array of link texts matching the order of welcomePageElementsList, for use with verifyAndClickLinks.
+     */
+    get welcomePageLinkTexts(): string[] {
+        return [
+            'Open New Account',
+            'Accounts Overview',
+            'Transfer Funds',
+            'Bill Pay',
+            'Find Transactions',
+            'Update Contact Info',
+            'Request Loan'
+        ];
+    }   
 }

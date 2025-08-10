@@ -7,12 +7,16 @@ let webActions: WebActions;
 export class HomePage {
     readonly page: Page;
     readonly context: BrowserContext;
+
+    // Elements on the left panel to login, register and forgot password
     readonly usernameInput: Locator;
     readonly passwordInput: Locator;
     readonly loginButton: Locator;
     readonly registerLink: Locator;
     readonly forgotLoginLink: Locator;
     readonly solutionsLink: Locator;
+
+    // Elements on the top-left navigation bar
     readonly aboutUsLink: Locator;
     readonly servicesLink: Locator;
     readonly productsLink: Locator;
