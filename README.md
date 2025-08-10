@@ -20,7 +20,7 @@ CI/CD testing: Supports execution of CI/CD pipeline via Jenkins and GitHub Webho
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v16 or above recommended)
-- [npm](https://www.npmjs.com/) (comes with Node.js)
+- Java (8 or above - for allure reports)
 - Playwright browsers installed (npx playwright install)
 - Allure Commandline CLI installed globally for reporting:
 ```powershell
