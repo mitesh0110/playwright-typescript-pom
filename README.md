@@ -88,15 +88,16 @@ Default is `qa` if not specified.
 
 ### Project Structure
 
-├── tests/                # Test cases organized by feature
-├── lib/                  # Reusable common libraries for UI & API interactions
-├── pageFactory/          # Page Object Model classes
-├── utils/                # Common assertions and verification utilities
-├── testdata/             # Test data files
-├── allure-report/        # Generated Allure report output folder
-├── playwright-report/    # Playwright built-in HTML report folder
-├── package.json
-├── playwright.config.ts  # Playwright configuration file
+- tests/                # Test cases organized by feature
+- lib/                  # Reusable common libraries for UI & API interactions
+- pageFactory/          # Page Object Model classes
+- utils/                # Common assertions and verification utilities
+- testdata/             # Test data files
+- allure-report/        # Generated Allure report output folder
+- playwright-report/    # Playwright built-in HTML report folder
+- package.json
+- playwright.config.ts  # Playwright configuration file
+- Jenkinsfile           # To run tests using CI/CD pipeline via Jenkins 
 
 ### Troubleshooting
 
