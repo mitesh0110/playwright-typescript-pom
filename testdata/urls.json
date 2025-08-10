@@ -1,0 +1,43 @@
+{
+  "baseURL": "https://parabank.parasoft.com/parabank",
+  "Home": {
+    "title": "ParaBank | Welcome | Online Banking",
+    "path": "/index.htm"
+  },
+  "Register": {
+    "title": "ParaBank | Register for Free Online Account Access",
+    "path": "/register.htm"
+  },
+  "Welcome": {
+    "title": "ParaBank | Customer Created",
+    "path": "/register.htm"
+  },
+  "Accounts Overview": {
+    "title": "ParaBank | Accounts Overview",
+    "path": "/overview.htm"
+  },
+  "Open New Account": {
+    "title": "ParaBank | Open Account",
+    "path": "/openaccount.htm"
+  },
+  "Transfer Funds": {
+    "title": "ParaBank | Transfer Funds",
+    "path": "/transfer.htm"
+  },
+  "Bill Pay": {
+    "title": "ParaBank | Bill Pay",
+    "path": "/billpay.htm"
+  },
+  "Find Transactions": {
+    "title": "ParaBank | Find Transactions",
+    "path": "/findtrans.htm"
+  },
+  "Update Contact Info": {
+    "title": "ParaBank | Update Profile",
+    "path": "/updateprofile.htm"
+  },
+  "Request Loan": {
+    "title": "ParaBank | Loan Request",
+    "path": "/requestloan.htm"
+  }
+}
