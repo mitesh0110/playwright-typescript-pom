@@ -62,7 +62,7 @@ test(`Navigate to Para bank application and verify the details`, { tag: '@Smoke'
         // Assert account table is visible
         await AssertionUtils.assertElementVisible(accountOverviewPage.accountTable);
         originalBalance = await webActions.getValueFromTableByColumn(accountOverviewPage.accountTable, 'Balance*');
-        console.log(`Original balance for the main account: ${originalBalance}`);
+        Logger.info(`Original balance for the main account: ${originalBalance}`);
     });
 
     await test.step('Verify global navigation menu on Home page is working as expected', async () => {
@@ -86,7 +86,7 @@ test(`Navigate to Para bank application and verify the details`, { tag: '@Smoke'
         minimumDeposit = parseFloat(await openNewAccountPage.getDepositAmount());
         Logger.info(`Original account number: ${originalAccountNumber}`);
         await webActions.clickElement(openNewAccountPage.openNewAccountButton);
-        
+
         // Assert 'Account Opened!' text is visible
         await AssertionUtils.assertTextVisible(accountOverviewPage.page, 'Account Opened!');
         // Assert Congratulations text on successful account opening
@@ -105,11 +105,13 @@ test(`Navigate to Para bank application and verify the details`, { tag: '@Smoke'
         // Assert account table is visible
         await AssertionUtils.assertElementVisible(accountOverviewPage.accountTable);     
         newAccountBalance = await webActions.getValueFromTableByColumn(accountOverviewPage.accountTable, 'Balance*', openedAccountNumber);
-        console.log(`Balance for new account (${openedAccountNumber}): ${newAccountBalance}`);
+        Logger.info(`Balance for new account (${openedAccountNumber}): ${newAccountBalance}`);
         // Parse balances as numbers (remove $ and commas)
         const parseBalance = (balance: string) => parseFloat(balance.replace(/[^0-9.-]+/g, ''));
         const originalBalanceNum = parseBalance(originalBalance);
         newAccountBalance = parseBalance(newAccountBalance);
+        Logger.info(`Parsed new account balance (${openedAccountNumber}): ${newAccountBalance}`);
+
         // Assert new account balance equals minimum deposit
         expect(newAccountBalance).toBe(minimumDeposit);
         // Get the balance for the original account after transfer
@@ -129,6 +131,7 @@ test(`Navigate to Para bank application and verify the details`, { tag: '@Smoke'
         await webActions.selectDropdown(transferFundsPage.fromAccountDropDown, openedAccountNumber);
         await webActions.selectDropdown(transferFundsPage.toAccountDropDown, originalAccountNumber);
         await webActions.clickElement(transferFundsPage.transferButton);
+
         // Assert transfer complete title is visible
         await AssertionUtils.assertElementVisible(transferFundsPage.transferCompleteTitle);
         // Assert transfer result message and values using locators from transferFundsPage
@@ -139,9 +142,9 @@ test(`Navigate to Para bank application and verify the details`, { tag: '@Smoke'
         const amountResultValue = amountResult.trim().replace('$', '');
         // Assert transfer amount matches expected value
         expect(amountResultValue).toBe(Number(transferAmount).toFixed(2));
-        // Assert from account matches opened account
+        // Assert from account matches the opened account on Step 5
         expect(fromAccountIdResult.trim()).toBe(openedAccountNumber.trim());
-        // Assert to account matches original account
+        // Assert to account matches original account that was created for user on Step 2
         expect(toAccountIdResult.trim()).toBe(originalAccountNumber.trim());
     });
 
@@ -158,6 +161,7 @@ test(`Navigate to Para bank application and verify the details`, { tag: '@Smoke'
         await webActions.clickElement(billPayPage.sendPaymentButton);
         console.log(`Bill payment amount used: ${billAmount}`);
         await billPayPage.billPaymentCompleteMessage.waitFor({ state: 'visible' })
+        
         // Assert bill payment complete message is visible
         await AssertionUtils.assertElementVisible(billPayPage.billPaymentCompleteMessage);
         // Assert displayed payee name matches the payee data
